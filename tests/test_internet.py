@@ -25,6 +25,7 @@ def test_pagination(url: str, browser_type: str):
     r = session.get(url)
     assert isinstance(r, HTMLResponse)
     assert next(r.html)
+    session.close()
 
 
 @pytest.mark.internet
@@ -36,6 +37,7 @@ async def test_async_pagination(event_loop, url, browser_type):
 
     r = await asession.get(url)
     assert await r.html.__anext__()
+    await asession.close()
 
 
 @pytest.mark.internet

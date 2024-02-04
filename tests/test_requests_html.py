@@ -383,7 +383,7 @@ async def test_browser_session_fail():
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("browser_type", ("chromium", "firefox", "webkit"))
-async def test_async_browser_session(browser_type):
+async def test_async_browser_session(event_loop, browser_type):
     session = AsyncHTMLSession(browser_type=browser_type)
     browser = await session.browser
     assert isinstance(browser, AsyncBrowser)

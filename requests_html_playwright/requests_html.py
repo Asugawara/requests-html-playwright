@@ -62,7 +62,7 @@ except AssertionError:
     raise RuntimeError("Requests-HTML requires Python 3.9+!")
 
 # install browsers
-os.system("playwright install")
+os.system("playwright install --with-deps")
 
 
 class Retry:
