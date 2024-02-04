@@ -17,20 +17,22 @@ urls = [
 ]
 
 
-@pytest.mark.parametrize("url", urls)
 @pytest.mark.internet
-def test_pagination(url: str):
-    session = HTMLSession()
+@pytest.mark.parametrize("url", urls)
+@pytest.mark.parametrize("browser_type", ("chromium", "firefox", "webkit"))
+def test_pagination(url: str, browser_type: str):
+    session = HTMLSession(browser_type=browser_type)
     r = session.get(url)
     assert isinstance(r, HTMLResponse)
     assert next(r.html)
 
 
-@pytest.mark.parametrize("url", urls)
 @pytest.mark.internet
 @pytest.mark.asyncio
-async def test_async_pagination(event_loop, url):
-    asession = AsyncHTMLSession()
+@pytest.mark.parametrize("url", urls)
+@pytest.mark.parametrize("browser_type", ("chromium", "firefox", "webkit"))
+async def test_async_pagination(event_loop, url, browser_type):
+    asession = AsyncHTMLSession(browser_type=browser_type)
 
     r = await asession.get(url)
     assert await r.html.__anext__()
