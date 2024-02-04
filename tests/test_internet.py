@@ -8,7 +8,7 @@ from requests_html_playwright.requests_html import (
 
 urls = [
     "https://xkcd.com/1957/",
-    "https://www.reddit.com/",
+    # "https://www.reddit.com/", # Access depends on network conditions
     "https://github.com/psf/requests-html/issues",
     "https://discord.com/category/engineering",
     "https://stackoverflow.com/",
