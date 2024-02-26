@@ -11,7 +11,7 @@ urls = [
     # "https://www.reddit.com/", # Access depends on network conditions
     "https://github.com/psf/requests-html/issues",
     "https://discord.com/category/engineering",
-    "https://stackoverflow.com/",
+    # "https://stackoverflow.com/",
     "https://www.frontiersin.org/",
     "https://azure.microsoft.com/en-us",
 ]
