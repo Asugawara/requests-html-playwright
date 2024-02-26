@@ -6,7 +6,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures._base import TimeoutError
 from functools import partial, wraps
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Set, Tuple, Union
 from urllib.parse import urljoin, urlparse, urlunparse
 
 import lxml
@@ -48,7 +48,7 @@ _RawHTML = bytes
 _LXML = Optional[HtmlElement]
 _Text = str
 _Containing = Optional[Union[str, List[str]]]
-_Links = set[str]
+_Links = Set[str]
 _Attrs = Dict
 _Next = Optional[Union["HTML", List[str], requests.Response]]
 _NextSymbol = Optional[List[str]]
@@ -57,9 +57,9 @@ _Session = Union["HTMLSession", "AsyncHTMLSession"]
 # Sanity checking.
 try:
     assert sys.version_info.major == 3
-    assert sys.version_info.minor > 8
+    assert sys.version_info.minor > 7
 except AssertionError:
-    raise RuntimeError("Requests-HTML requires Python 3.9+!")
+    raise RuntimeError("Requests-HTML requires Python 3.8+!")
 
 # install browsers
 os.system("playwright install --with-deps")
@@ -569,7 +569,7 @@ class HTML(BaseParser):
         keep_page: bool,
         cookies: Optional[List[SetCookieParam]] = None,
         render_html: bool = False,
-    ) -> tuple[Optional[str], Optional[Any], Optional[Any]]:
+    ) -> Tuple[Optional[str], Optional[Any], Optional[Any]]:
         try:
             context = self.browser.new_context()
             if cookies is not None:
@@ -604,7 +604,7 @@ class HTML(BaseParser):
         keep_page: bool,
         cookies: Optional[List[SetCookieParam]] = None,
         render_html: bool = False,
-    ) -> tuple[Optional[str], Optional[Any], Optional[Any]]:
+    ) -> Tuple[Optional[str], Optional[Any], Optional[Any]]:
         """Handle page creation and js rendering. Internal use for arender methods."""
         try:
             context = await self.browser.new_context()

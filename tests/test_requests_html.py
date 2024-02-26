@@ -17,7 +17,7 @@ from requests_html_playwright.requests_html import (
 )
 
 
-@pytest.mark.parametrize("version", ("3.9", "3.10", "3.11", "3.12"))
+@pytest.mark.parametrize("version", ("3.8", "3.9", "3.10", "3.11", "3.12"))
 def test_import(version: str):
     major, minor = map(int, version.split("."))
     with patch.object(sys, "version_info") as mock_version, patch.dict("sys.modules"):
@@ -27,7 +27,7 @@ def test_import(version: str):
         assert importlib.import_module("requests_html_playwright.requests_html")
 
 
-@pytest.mark.parametrize("version", ("3.7", "3.8"))
+@pytest.mark.parametrize("version", ("3.7",))
 def test_import_fail(version: str):
     major, minor = map(int, version.split("."))
     with patch.object(sys, "version_info") as mock_version, patch.dict("sys.modules"):
