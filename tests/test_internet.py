@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from requests_html_playwright.requests_html import (
@@ -15,6 +17,8 @@ urls = [
     "https://www.frontiersin.org/",
     "https://azure.microsoft.com/en-us",
 ]
+
+os.system("playwright install --with-deps")
 
 
 @pytest.mark.internet

@@ -16,6 +16,8 @@ from requests_html_playwright.requests_html import (
     Retry,
 )
 
+os.system("playwright install --with-deps")
+
 
 @pytest.mark.parametrize("version", ("3.8", "3.9", "3.10", "3.11", "3.12"))
 def test_import(version: str):
