@@ -6,7 +6,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures._base import TimeoutError
 from functools import partial, wraps
-from typing import Any, Dict, List, Optional, Set, Tuple, Union
+from typing import Any, Dict, List, Literal, Optional, Set, Tuple, Union
 from urllib.parse import urljoin, urlparse, urlunparse
 
 import lxml
@@ -664,6 +664,8 @@ class HTML(BaseParser):
         cookies: Optional[List] = None,
         send_cookies_session: bool = False,
         render_html: bool = False,
+        encoding: str = DEFAULT_ENCODING,
+        errors: Literal["strict", "replace", "ignore"] = "strict",
     ):
         """Reloads the response in Chromium, and replaces HTML content
         with an updated version, with JavaScript executed.
@@ -673,7 +675,6 @@ class HTML(BaseParser):
         :param keep_page: If ``True`` will allow you to interact with the browser page through ``r.html.page``.
 
         :param send_cookies_session: If ``True`` send ``HTMLSession.cookies`` convert.
-        :param cookies: If not ``empty`` send ``cookies``.
 
         If ``script`` is specified, it will execute the provided JavaScript at
         runtime. Example:
@@ -721,8 +722,8 @@ class HTML(BaseParser):
 
         html = HTML(
             url=self.url,
-            html=content.encode(DEFAULT_ENCODING),
-            default_encoding=DEFAULT_ENCODING,
+            html=content.encode(encoding=encoding, errors=errors),
+            default_encoding=encoding,
             session=self.session,
         )
         for k, v in html.__dict__.items():
@@ -737,6 +738,8 @@ class HTML(BaseParser):
         cookies: Optional[List] = None,
         send_cookies_session: bool = False,
         render_html: bool = False,
+        encoding: str = DEFAULT_ENCODING,
+        errors: Literal["strict", "replace", "ignore"] = "strict",
     ):
         """Async version of render. Takes same parameters."""
 
@@ -760,8 +763,8 @@ class HTML(BaseParser):
 
         html = HTML(
             url=self.url,
-            html=content.encode(DEFAULT_ENCODING),
-            default_encoding=DEFAULT_ENCODING,
+            html=content.encode(encoding=encoding, errors=errors),
+            default_encoding=encoding,
             session=self.session,
         )
         for k, v in html.__dict__.items():
