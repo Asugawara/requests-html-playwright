@@ -10,7 +10,7 @@ simple and intuitive as possible.
 
 When using this library you automatically get:
 
--   **Full JavaScript support**! (Using Chromium, thanks to playwright)
+-   **Full JavaScript support**! (Using Chromium(Webkit, Firefox), thanks to playwright)
 -   *CSS Selectors* (a.k.a jQuery-style, thanks to PyQuery).
 -   *XPath Selectors*, for the faint of heart.
 -   Mocked user-agent (like a real web browser).
@@ -27,7 +27,7 @@ $ pip install requests-html-playwright
 ✨🍰✨
 ```
 
-Only **Python 3.9 and above** is supported.
+Only **Python 3.8 and above** is supported.
 # Tutorial & Usage
 
 Make a GET request to \'python.org\', using Requests:
@@ -143,17 +143,17 @@ programming
 More complex CSS Selector example (copied from Chrome dev tools):
 
 ```python
->>> r = session.get('https://github.com/')
->>> sel = 'body > div.application-main > div.jumbotron.jumbotron-codelines > div > div > div.col-md-7.text-center.text-md-left > p'
+>>> r = session.get('https://python.org/')
+>>> sel = '#about > ul > li.tier-2.element-1 > a'
 >>> print(r.html.find(sel, first=True).text)
-GitHub is a development platform inspired by the way you work. From open source to business, you can host and review code, manage projects, and build software alongside millions of other developers.
+Applications
 ```
 
 XPath is also supported:
 
 ```python
->>> r.html.xpath('/html/body/div[1]/a')
-[<Element 'a' class=('px-2', 'py-4', 'show-on-focus', 'js-skip-to-content') href='#start-of-content' tabindex='1'>]
+>>> r.html.xpath('//*[@id="about"]/ul/li[1]/a')
+[<Element 'a' href='/about/apps/' title=''>]
 ```
 
 # JavaScript Support
