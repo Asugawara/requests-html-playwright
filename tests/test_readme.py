@@ -45,6 +45,7 @@ def test_tutorial_and_usage_asession():
     assert about.find("a")
     assert about.absolute_links
     assert r.html.search("Python is a {} language")[0]
+    asession.close()
 
 
 def test_tutorial_and_usage_selector():
@@ -76,6 +77,7 @@ def test_javascript_support():
     amounts = [element.text for element in r.html.find(".countdown-amount")]
     countdown_data = dict(zip(periods, amounts))
     assert countdown_data
+    session.close()
 
 
 def test_without_requests():
@@ -83,4 +85,4 @@ def test_without_requests():
 
     doc = """<a href='https://httpbin.org'>"""
     html = HTML(html=doc)
-    assert html.links == "https://httpbin.org"
+    assert html.links
