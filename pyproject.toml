@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "requests-html-playwright"
-version = "0.12.2"
+version = "0.12.3"
 description = "Requests-HTML(with microsoft/playwright-python): HTML Parsing for Humans™"
 authors = ["Asugawara <asgasw@gmail.com>"]
 readme = "README.md"
@@ -34,6 +34,7 @@ w3lib = "^2.1.1"
 rfc3986 = "^2.0.0"
 playwright = "^1.39.0"
 beautifulsoup4 = "^4.12.2"
+lxml-html-clean = "^0.1.1"
 
 
 [tool.poetry.group.dev.dependencies]
