@@ -57,9 +57,9 @@ _Session = Union["HTMLSession", "AsyncHTMLSession"]
 # Sanity checking.
 try:
     assert sys.version_info.major == 3
-    assert sys.version_info.minor > 7
+    assert sys.version_info.minor > 8
 except AssertionError:
-    raise RuntimeError("Requests-HTML requires Python 3.8+!")
+    raise RuntimeError("Requests-HTML requires Python 3.9+!")
 
 # install browsers
 os.system("playwright install --with-deps chromium")
