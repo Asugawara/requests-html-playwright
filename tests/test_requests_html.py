@@ -19,7 +19,7 @@ from requests_html_playwright.requests_html import (
 os.system("playwright install --with-deps")
 
 
-@pytest.mark.parametrize("version", ("3.8", "3.9", "3.10", "3.11", "3.12"))
+@pytest.mark.parametrize("version", ("3.9", "3.10", "3.11", "3.12", "3.13"))
 def test_import(version: str):
     major, minor = map(int, version.split("."))
     with patch.object(sys, "version_info") as mock_version, patch.dict("sys.modules"):
