@@ -27,7 +27,7 @@ $ pip install requests-html-playwright
 ✨🍰✨
 ```
 
-Only **Python 3.8 and above** is supported.
+Only **Python 3.9 and above** is supported.
 # Tutorial & Usage
 
 Make a GET request to \'python.org\', using Requests:
